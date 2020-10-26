@@ -1,0 +1,16 @@
+- id: 'esszimmer_strahler_on_off'
+  alias: Esszimmer Strahler On Off
+  description: ''
+  trigger:
+  - entity_id: input_boolean.esszimmer_strahler_switch
+    platform: state
+  condition: []
+  action:
+  - data_template:
+      debug: False
+      follow_object: input_boolean.esszimmer_strahler_switch
+      entity_ids:
+      - light.esszimmer_strahler_1
+      - light.esszimmer_strahler_2
+      - switch.strahler_esszimmer
+    service: python_script.follow_switch_state
